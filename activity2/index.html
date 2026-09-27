@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Timpla Ni Pogi - Coffee Shop Landing Page">
+    <title>Timpla Ni Pogi - Landing Page</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bs-coffee-main: #3d2314;
+            --bs-coffee-accent: #6f4e37;
+            --bs-coffee-gold: #f1e0c6;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #faf6f0;
+            color: #333;
+        }
+
+        /* Custom Navbar */
+        .navbar-custom {
+            background-color: var(--bs-coffee-main);
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #ffffff;
+        }
+        .navbar-custom .nav-link:hover {
+            color: var(--bs-coffee-gold);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
+            padding: 100px 0;
+            color: #ffffff;
+        }
+        .btn-coffee {
+            background-color: var(--bs-coffee-accent);
+            color: #fff;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: bold;
+        }
+        .btn-coffee:hover {
+            background-color: var(--bs-coffee-main);
+            color: var(--bs-coffee-gold);
+        }
+
+        /* Menu Section Cards */
+        .card-menu {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card-menu:hover {
+            transform: translateY(-5px);
+        }
+        .card-menu img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bs-coffee-main);
+            color: #ffffff;
+            padding: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">TIMPLA NI POGI</a>
+            <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-coffee text-white" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-3">Timpla Ni Pogi</h1>
+            <p class="lead mb-4 fs-4 text-warning">"Kapeng May Bitaw"</p>
+            <p class="mb-4 mx-auto" style="max-width: 600px;">
+                Experience rich, handcrafted coffee made from premium beans. Open from 5:00 PM til 1:00 AM to keep your study and work nights fueled!
+            </p>
+            <a href="#menu" class="btn btn-coffee btn-lg me-2">Explore Menu</a>
+            <a href="register.html" class="btn btn-outline-light btn-lg rounded-pill">Join Us</a>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4" style="color: var(--bs-coffee-main);">About Our Cafe</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <p class="fs-5 text-muted">
+                        Located at Lalayat (Beside Kier's Kainan), Timpla Ni Pogi provides the perfect blend of cozy ambiance and refreshing coffee brews. Whether you need a place to chill or an extra boost for late-night productivity, we have a cup specially crafted for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED MENU SECTION -->
+    <section id="menu" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: var(--bs-coffee-main);">Best Sellers</h2>
+            <div class="row g-4">
+                
+                <!-- CARD 1 -->
+                <div class="col-md-4">
+                    <div class="card card-menu h-100">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Espresso">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Signature Espresso</h5>
+                            <p class="card-text text-muted">Rich and bold concentrated coffee brewed straight from premium dark roasted coffee beans.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="col-md-4">
+                    <div class="card card-menu h-100">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Iced Coffee">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Creamy Iced Caramel</h5>
+                            <p class="card-text text-muted">Cold-brewed espresso blended with smooth milk and topped with rich golden caramel drizzle.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="col-md-4">
+                    <div class="card card-menu h-100">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=600&auto=format&fit=crop" class="card-img-top" alt="Matcha Latte">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Pogi's Special Brew</h5>
+                            <p class="card-text text-muted">Our house-blend house favorite crafted with a smooth creamy texture and balanced sweetness.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-1"><strong>Timpla Ni Pogi</strong> &copy; 2026 All Rights Reserved</p>
+            <small class="text-white-50">Lalayat Beside Kier's Kainan | Open 5:00 PM til 12:00 AM</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

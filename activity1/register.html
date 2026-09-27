@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Timpla Ni Pogi</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 35px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .brand-title {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            color: #f1e0c6;
+            font-size: 13px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            font-size: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            background: #ffffff;
+            border-color: #6f4e37;
+        }
+
+        .helper-msg {
+            display: none;
+            font-size: 11px;
+            margin-top: 5px;
+            margin-left: 12px;
+            font-weight: bold;
+        }
+
+        .msg-info { color: #ffd700; }
+        .msg-error { color: #ff6b6b; }
+        .msg-success { color: #5cdb95; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #6f4e37, #3d2314);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .switch-text {
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .switch-text a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .switch-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="form-card">
+        <h1 class="brand-title">Register</h1>
+        <p class="subtitle">Join Timpla Ni Pogi</p>
+
+        <form id="registerForm" action="#" method="GET">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                <div class="helper-msg" id="fullname-msg"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div class="helper-msg" id="email-msg"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                <div class="helper-msg" id="phone-msg"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create password" required>
+                <div class="helper-msg" id="password-msg"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required>
+                <div class="helper-msg" id="confirm-msg"></div>
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+
+        <p class="switch-text">
+            Already have an account? <a href="login.html">Login here</a>
+        </p>
+    </main>
+
+    
+    <script>
+        $(document).ready(function () {
+            $('#fullname').on('input', function () {
+                const val = $(this).val();
+                const msg = $('#fullname-msg');
+
+                if (val.length === 0) {
+                    msg.hide();
+                } else if (/\d/.test(val)) {
+                    msg.attr('class', 'helper-msg msg-error')
+                       .text('⚠️ It looks like you entered a number in your name.')
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'helper-msg msg-success')
+                       .text('✓ Looks good!')
+                       .fadeIn();
+                }
+            });
+
+            $('#email').on('input', function () {
+                const email = $(this).val();
+                const msg = $('#email-msg');
+                const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                if (email.length === 0) {
+                    msg.hide();
+                } else if (!emailReg.test(email)) {
+                    msg.attr('class', 'helper-msg msg-error')
+                       .text('⚠️ Please enter a valid email address.')
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'helper-msg msg-success')
+                       .text('✓ Valid email address.')
+                       .fadeIn();
+                }
+            });
+
+            $('#phone').on('input', function () {
+                const phone = $(this).val();
+                const msg = $('#phone-msg');
+
+                if (phone.length === 0) {
+                    msg.hide();
+                } else if (/[^\d+]/.test(phone)) {
+                    msg.attr('class', 'helper-msg msg-error')
+                       .text('⚠️ It looks like you entered letters. Numbers only!')
+                       .fadeIn();
+                } else if (phone.length < 11) {
+                    msg.attr('class', 'helper-msg msg-info')
+                       .text('💡 Enter at least 11 digits.')
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'helper-msg msg-success')
+                       .text('✓ Valid phone number.')
+                       .fadeIn();
+                }
+            });
+
+            $('#password').on('input', function () {
+                const pass = $(this).val();
+                const msg = $('#password-msg');
+
+                if (pass.length === 0) {
+                    msg.hide();
+                } else if (pass.length < 6) {
+                    msg.attr('class', 'helper-msg msg-error')
+                       .text('⚠️ Password too short (min. 6 characters).')
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'helper-msg msg-success')
+                       .text('✓ Strong password!')
+                       .fadeIn();
+                }
+
+                if ($('#confirm-password').val().length > 0) {
+                    $('#confirm-password').trigger('input');
+                }
+            });
+
+            $('#confirm-password').on('input', function () {
+                const pass = $('#password').val();
+                const confirmPass = $(this).val();
+                const msg = $('#confirm-msg');
+
+                if (confirmPass.length === 0) {
+                    msg.hide();
+                } else if (pass !== confirmPass) {
+                    msg.attr('class', 'helper-msg msg-error')
+                       .text('❌ Passwords do not match!')
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'helper-msg msg-success')
+                       .text('✓ Passwords match!')
+                       .fadeIn();
+                }
+            });
+
+            $('#registerForm').submit(function (e) {
+                const pass = $('#password').val();
+                const confirmPass = $('#confirm-password').val();
+
+                if (pass !== confirmPass) {
+                    e.preventDefault();
+                    alert('Please make sure your passwords match before submitting!');
+                } else {
+                    alert('Registration successful! Welcome to Timpla Ni Pogi!');
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

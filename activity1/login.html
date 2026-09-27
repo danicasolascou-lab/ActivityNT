@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timpla Ni Pogi - Login & Register</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .brand-title {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            color: #f1e0c6;
+            font-size: 13px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            background: #ffffff;
+            border-color: #6f4e37;
+        }
+
+        /* Real-time Message Styling */
+        .input-helper-msg {
+            display: none;
+            font-size: 11px;
+            margin-top: 6px;
+            margin-left: 12px;
+            font-weight: bold;
+        }
+
+        .msg-info { color: #ffd700; }
+        .msg-error { color: #ff6b6b; }
+        .msg-success { color: #5cdb95; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #6f4e37, #3d2314);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .switch-text {
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .switch-text a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .switch-text a:hover {
+            text-decoration: underline;
+        }
+
+        #register-form-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="form-card">
+        <h1 class="brand-title">Timpla Ni Pogi</h1>
+        <p class="subtitle">Kapeng May Bitaw</p>
+
+        <div id="login-form-container">
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Username or Email</label>
+                    <input type="text" id="login-username" placeholder="Enter your username" required>
+                    <div class="input-helper-msg" id="login-user-msg"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                    <div class="input-helper-msg" id="login-pass-msg"></div>
+                </div>
+
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+
+            <p class="switch-text">
+                Don't have an account? <a id="go-to-register">Register here</a>
+            </p>
+        </div>
+
+        <div id="register-form-container">
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-username">Username or Email</label>
+                    <input type="text" id="reg-username" placeholder="Create username or email" required>
+                    <div class="input-helper-msg" id="reg-user-msg"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" placeholder="Create password" required>
+                    <div class="input-helper-msg" id="reg-pass-msg"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" placeholder="Confirm password" required>
+                    <div class="input-helper-msg" id="reg-confirm-msg"></div>
+                </div>
+
+                <button type="submit" class="btn-submit">Register</button>
+            </form>
+
+            <p class="switch-text">
+                Already have an account? <a id="go-to-login">Login here</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            
+            $('#go-to-register').click(function (e) {
+                e.preventDefault();
+                $('#login-form-container').fadeOut(300, function () {
+                    $('#register-form-container').fadeIn(300);
+                });
+            });
+
+            $('#go-to-login').click(function (e) {
+                e.preventDefault();
+                $('#register-form-container').fadeOut(300, function () {
+                    $('#login-form-container').fadeIn(300);
+                });
+            });
+
+           
+            function checkUsernameInput(inputElem, msgElem) {
+                const val = $(inputElem).val();
+                
+                if (val.length === 0) {
+                    $(msgElem).hide();
+                    return;
+                }
+
+                const hasNumber = /\d/.test(val);
+                const isOnlyNumber = /^\d+$/.test(val);
+
+                if (isOnlyNumber) {
+                    $(msgElem)
+                        .attr('class', 'input-helper-msg msg-error')
+                        .text("⚠️ It looks like you entered only numbers.")
+                        .fadeIn();
+                } else if (hasNumber) {
+                    $(msgElem)
+                        .attr('class', 'input-helper-msg msg-info')
+                        .text("💡 Note: You included numbers in your username.")
+                        .fadeIn();
+                } else if (val.length < 3) {
+                    $(msgElem)
+                        .attr('class', 'input-helper-msg msg-error')
+                        .text("⚠️ Username is too short (min. 3 characters).")
+                        .fadeIn();
+                } else {
+                    $(msgElem)
+                        .attr('class', 'input-helper-msg msg-success')
+                        .text("✓ Valid username format.")
+                        .fadeIn();
+                }
+            }
+
+            $('#login-username').on('input', function() {
+                checkUsernameInput(this, '#login-user-msg');
+            });
+
+            $('#reg-username').on('input', function() {
+                checkUsernameInput(this, '#reg-user-msg');
+            });
+
+            $('#reg-password').on('input', function() {
+                const pass = $(this).val();
+                const msg = $('#reg-pass-msg');
+
+                if (pass.length === 0) {
+                    msg.hide();
+                } else if (pass.length < 6) {
+                    msg.attr('class', 'input-helper-msg msg-error')
+                       .text("⚠️ Password weak: Needs at least 6 characters.")
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'input-helper-msg msg-success')
+                       .text("✓ Strong password!")
+                       .fadeIn();
+                }
+
+                if ($('#reg-confirm-password').val().length > 0) {
+                    $('#reg-confirm-password').trigger('input');
+                }
+            });
+
+            $('#reg-confirm-password').on('input', function() {
+                const pass = $('#reg-password').val();
+                const confirmPass = $(this).val();
+                const msg = $('#reg-confirm-msg');
+
+                if (confirmPass.length === 0) {
+                    msg.hide();
+                } else if (pass !== confirmPass) {
+                    msg.attr('class', 'input-helper-msg msg-error')
+                       .text("❌ Passwords do not match!")
+                       .fadeIn();
+                } else {
+                    msg.attr('class', 'input-helper-msg msg-success')
+                       .text("✓ Passwords match!")
+                       .fadeIn();
+                }
+            });
+
+            $('#login-form').submit(function (e) {
+                e.preventDefault();
+                alert('Login Submitted!');
+            });
+
+            $('#register-form').submit(function (e) {
+                e.preventDefault();
+                const pass = $('#reg-password').val();
+                const confirmPass = $('#reg-confirm-password').val();
+
+                if (pass !== confirmPass) {
+                    alert('Please fix password errors before submitting.');
+                    return;
+                }
+
+                alert('Registration Successful!');
+                $('#register-form-container').fadeOut(300, function () {
+                    $('#login-form-container').fadeIn(300);
+                    $('#register-form')[0].reset();
+                    $('.input-helper-msg').hide();
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
